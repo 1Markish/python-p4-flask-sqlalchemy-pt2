@@ -7,9 +7,6 @@ from faker import Faker
 from app import app
 from models import db, Owner, Pet
 
-
-db.init_app(app)
-
 fake = Faker()
 
 with app.app_context():
@@ -28,7 +25,7 @@ with app.app_context():
     pets = []
     species = ['Dog', 'Cat', 'Chicken', 'Hamster', 'Turtle']
     for n in range(100):
-        pet = Pet(name=fake.first_name(), species=rc(species), owner=rc(owner))
+        pet = Pet(name=fake.first_name(), species=rc(species), owner=rc(owners))
         pets.append(pet)
         
     db.session.add_all(pets)
